@@ -1,0 +1,37 @@
+entity: User
+items:
+  User1:
+    email: user1@bretsch.eu
+    hashedPassword: $2b$10$gWYo9in8xBDH0IBhlGmHlO8k6FQ27ltzME/dHPbIzHftuybiX30GC
+    userRole: admin
+    firstName: user1
+    lastName: bretsch1
+    birthDate: "1996-01-31"
+    preferedPayment: PayPal
+    streetPlusNumber: H-DA 2020
+    city: Darmstadt
+    actualBooking: null
+
+  User2:
+    email: user2@bretsch.eu
+    hashedPassword: $2b$10$ezgvxVBevnWtKO5YJt8wjexQEs5TtDnuQGgI4V4MQRpyeavxqsm5G
+    userRole: user
+    firstName: user2
+    lastName: bretsch2
+    birthDate: "2000-06-17"
+    preferedPayment: PayPal
+    streetPlusNumber: H-DA 2020
+    city: Darmstadt
+    actualBooking: null
+
+  User3:
+    email: user3@bretsch.eu
+    hashedPassword: $2b$10$FubzMT4kvfbNY8EjD/4.yOlliQ/IJl.Y0ODLSo6yXFnQrbwdRHRTC
+    userRole: user
+    firstName: user3
+    lastName: bretsch
+    birthDate: "1980-04-20"
+    preferedPayment: PayPal
+    streetPlusNumber: H-DA 2020
+    city: Darmstadt
+    actualBooking: null

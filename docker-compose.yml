@@ -1,0 +1,44 @@
+version: "3.4"
+services:
+  bretsch-db:
+    image: mariadb:10.1
+    container_name: bretsch-db
+    restart: always
+    ports: # Have to match the value set in env file
+      - 3306:3306
+    volumes:
+      - ./bretsch-app/bretsch-db:/var/lib/mysql
+    environment: # Have to match the values set in env file
+      - MYSQL_ROOT_HOST=% # Allow remote access to all addresses.
+      - MYSQL_ROOT_PASSWORD=NeverGuessThis!
+      - MYSQL_DATABASE=bretsch-app
+  bretsch-api:
+    image: node:alpine
+    container_name: bretsch-api
+    working_dir: /bretsch-app/bretsch-api
+    command: sh entrypoint.sh -dev # Remove the "-dev" to turn off the development mode
+    restart: always
+    ports: # Have to match the value set in env file
+      - 3000:3000
+    volumes:
+      - ./bretsch-app/bretsch-api:/bretsch-app/bretsch-api
+  bretsch-frontend:
+    image: node:alpine
+    container_name: bretsch-frontend
+    working_dir: /bretsch-app/bretsch-frontend
+    command: sh entrypoint.sh -skipbuild # Remove the "-skipbuild" to enable the creation of an optimized output build
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./bretsch-app/bretsch-frontend:/bretsch-app/bretsch-frontend
+  bretsch-socket-server:
+    image: node:alpine
+    container_name: bretsch-socket-server
+    working_dir: /bretsch-app/bretsch-socket-server
+    command: sh entrypoint.sh -dev # Remove the "-dev" to turn off the development mode
+    restart: always
+    ports: # Have to match the value set in env file
+      - 5000:5000
+    volumes:
+      - ./bretsch-app/bretsch-socket-server:/bretsch-app/bretsch-socket-server
